@@ -2,56 +2,58 @@
 
 # Klipin — Frontend
 
-**Client aplikasi Klipin**, sistem riset referensi & literatur skripsi: cari jurnal, ringkas otomatis, dan simpan catatan.
+**The Klipin client**: a literature-research tool for thesis writing — search journals, summarise automatically, and keep notes.
 
 [![Status](https://img.shields.io/badge/status-academic%20project-blue?style=flat-square)](#)
 [![Next.js](https://img.shields.io/badge/Next.js-15-000000?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![Tailwind](https://img.shields.io/badge/Tailwind%20CSS-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 
+**English** · [Bahasa Indonesia](README.id.md)
+
 </div>
 
 ---
 
-## Tentang
+## About
 
-Antarmuka Klipin — aplikasi bantu mahasiswa mengumpulkan literatur skripsi. Pengguna mencari paper, meminta ringkasan otomatis, lalu menyimpannya ke perpustakaan pribadi dan mencatat ide.
+The Klipin interface, built for students collecting sources for a thesis. Users search for papers, request a summary, then save the result to a personal library and attach notes.
 
-Repo ini adalah **frontend**; API-nya ada di **[`klipin-backend`](https://github.com/Ilhamaji/klipin-backend)**.
+This is the **frontend**; the API lives in **[`klipin-backend`](https://github.com/Ilhamaji/klipin-backend)**.
 
-## Fitur
+## Features
 
-Halaman `/` menggabungkan pencarian dan ringkasan: masukkan kata kunci, hasil paper muncul, lalu minta ringkasan tanpa pindah halaman.
+The `/` page combines search and summarisation: enter a keyword, results appear, and you can request a summary without leaving the page.
 
-Empat halaman lain menampung hasil kerja:
+Four other pages hold the working results:
 
-- `/library` — artikel yang disimpan.
-- `/notes` — catatan pribadi per artikel (tambah, ubah, hapus).
-- `/history` — riwayat query, bisa dihapus per entri.
-- `/settings` — pengaturan akun.
+- `/library` — saved articles.
+- `/notes` — personal notes per article (create, edit, delete).
+- `/history` — previous queries, deletable one by one.
+- `/settings` — account settings.
 
-Login memakai JWT yang disimpan di cookie lewat `js-cookie`. Tema terang/gelap diatur `ThemeProvider`, dan perpindahan halaman dianimasikan dengan Framer Motion.
+Login uses a JWT stored in a cookie via `js-cookie`. Light and dark themes are handled by `ThemeProvider`, and page transitions are animated with Framer Motion.
 
 ## Tech Stack
 
-| Bagian | Teknologi |
+| Layer | Technology |
 | --- | --- |
 | Framework | Next.js 15 (App Router) |
-| Bahasa | TypeScript |
+| Language | TypeScript |
 | Styling | Tailwind CSS 4 |
 | Auth | JWT (cookie) |
-| Animasi | Framer Motion |
-| Ikon | Lucide React |
-| Proxy API | `middleware.ts` (rewrite `/api` → backend) |
+| Animation | Framer Motion |
+| Icons | Lucide React |
+| API proxy | `middleware.ts` (rewrites `/api` to the backend) |
 
-## Menjalankan
+## Getting Started
 
-### 1. Prasyarat
+### 1. Prerequisites
 
 - Node.js 18+
-- Backend [`klipin-backend`](https://github.com/Ilhamaji/klipin-backend) berjalan
+- A running [`klipin-backend`](https://github.com/Ilhamaji/klipin-backend)
 
-### 2. Clone & install
+### 2. Clone and install
 
 ```bash
 git clone https://github.com/Ilhamaji/klipin-frontend.git
@@ -65,38 +67,38 @@ npm install
 API_BASE_URL=http://localhost:3000
 ```
 
-### 4. Jalankan
+### 4. Run
 
 ```bash
 npm run dev
 ```
 
-Buka [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000).
 
-## Struktur
+## Project Layout
 
 ```
 app/
-  layout.tsx              # root layout & provider
-  login/page.tsx          # halaman login
+  layout.tsx              # root layout and providers
+  login/page.tsx          # login page
   (main)/
-    layout.tsx            # layout dengan sidebar
-    page.tsx              # pencarian & ringkasan
-    library/page.tsx      # perpustakaan artikel
-    notes/page.tsx        # catatan
-    history/page.tsx      # riwayat pencarian
-    settings/page.tsx     # pengaturan
+    layout.tsx            # layout with the sidebar
+    page.tsx              # search and summarisation
+    library/page.tsx      # saved articles
+    notes/page.tsx        # notes
+    history/page.tsx      # search history
+    settings/page.tsx     # settings
 components/
   Sidebar.tsx, ThemeProvider.tsx, ConfirmationModal.tsx
 lib/
-  api.ts                  # seluruh pemanggilan API (login, search, summarize, notes)
+  api.ts                  # every API call (login, search, summarize, notes)
   utils.ts
-middleware.ts             # proteksi route & proxy /api
+middleware.ts             # route protection and /api proxying
 ```
 
-## Kontrak API
+## API Contract
 
-Frontend memanggil endpoint berikut pada backend:
+The frontend calls these endpoints on the backend:
 
 ```http
 POST   /api/auth/login
@@ -111,5 +113,5 @@ DELETE /api/note/delete/:id
 ---
 
 <div align="center">
-Dibuat oleh <a href="https://github.com/Ilhamaji">Ilham Aji</a>
+Built by <a href="https://github.com/Ilhamaji">Ilham Aji</a>
 </div>
